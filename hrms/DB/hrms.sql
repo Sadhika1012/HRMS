@@ -66,7 +66,7 @@ CREATE TABLE queries (
     status ENUM('OPEN', 'CLOSED') DEFAULT 'OPEN',
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE queries MODIFY COLUMN query_id INT AUTO_INCREMENT;
 -- Table: payroll_structure
 CREATE TABLE payroll_structure (
     payroll_id INT PRIMARY KEY,
