@@ -29,10 +29,19 @@ public class LoginController {
 
     @PostMapping("/employee/login")
     public String employeeLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session, Model model) {
-        // Call the authenticate method with the role as EMPLOYEE
-        if (authenticationService.authenticate(username, password, UserRole.EMPLOYEE)) {
+        // Authenticate the user and retrieve the user ID if authentication is successful
+        int userId = authenticationService.authenticateAndGetUserId(username, password, UserRole.EMPLOYEE);
+        
+        if (userId != -1) {
             // Employee authentication successful, redirect to employee home page
+            session.setAttribute("userId", userId); // Store user ID in session
             session.setAttribute("username", username); // Store username in session for further use
+            session.setAttribute("role", UserRole.EMPLOYEE);
+             // Print session attribute values to console
+        System.out.println("User ID: " + session.getAttribute("userId"));
+        System.out.println("Username: " + session.getAttribute("username"));
+        System.out.println("Role: " + session.getAttribute("role"));
+
             return "redirect:/employee/home"; // Return the HTML page name
         } else {
             // Authentication failed, redirect back to employee login page with error message
@@ -51,10 +60,14 @@ public class LoginController {
 
     @PostMapping("/")
     public String hrLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session, Model model) {
-        // Call the authenticate method with the role as HR
-        if (authenticationService.authenticate(username, password, UserRole.HR)) {
+        // Authenticate the user and retrieve the user ID if authentication is successful
+        int userId = authenticationService.authenticateAndGetUserId(username, password, UserRole.HR);
+        
+        if (userId != -1) {
             // HR authentication successful, redirect to HR home page
-            session.setAttribute("username", username); // Store username in session for further use
+            session.setAttribute("userId", userId); // Store user ID in session
+            session.setAttribute("username", username);
+            session.setAttribute("role", UserRole.HR); // Store username in session for further use
             return "redirect:/hr/home"; // Return the HTML page name
         } else {
             // Authentication failed, redirect back to HR login page with error message

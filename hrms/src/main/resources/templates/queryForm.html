@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Query</title>
+</head>
+<body>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <h2>Post Query</h2>
+    <form action="/employee/post" method="post" th:object="${query}">
+        <input type="hidden" id="userId" name="userId" th:value="${userId}">
+        <label for="queryText">Query Text:</label><br>
+        <textarea id="queryText" name="queryText" th:field="*{queryText}"></textarea><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    <a th:href="@{/employee/queries}"><button>View Query History</button></a>
+</body>
+</html>

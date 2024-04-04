@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Query List</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
+    <h2>Query List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Query ID</th>
+                <th>Employee ID</th>
+                <th>Query Text</th>
+                <th>Response</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="query : ${queries}">
+                <td th:text="${query.queryId}"></td>
+                <td th:text="${query.employeeId}"></td>
+                <td th:text="${query.queryText}"></td>
+                <td th:text="${query.response}"></td>
+                <td th:text="${query.status}"></td>
+                <td>
+                    <a th:href="@{/hr/{queryId}/respond(queryId=${query.queryId})}">
+                    <button>Respond</button>
+                    </a>
+                </td>
+
+              
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
