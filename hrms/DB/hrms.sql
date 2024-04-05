@@ -56,7 +56,7 @@ CREATE TABLE complaints (
     status ENUM('OPEN', 'CLOSED') DEFAULT 'OPEN',
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE complaints MODIFY COLUMN complaint_id INT AUTO_INCREMENT;
 -- Table: queries
 CREATE TABLE queries (
     query_id INT PRIMARY KEY,
