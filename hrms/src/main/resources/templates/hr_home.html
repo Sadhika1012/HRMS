@@ -5,6 +5,7 @@
     <title>HR Home</title>
 </head>
 <body>
+    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
     <h2>Welcome, <span th:text="${session.username}">HR</span>!</h2>
     <p>This is the HR Home page.</p>
 </body>

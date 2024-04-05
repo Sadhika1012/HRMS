@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Respond to Query</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
+    <h2>Respond to Query</h2>
+    <form th:action="@{/hr/{queryId}/respond(queryId=${queryId})}" method="post">
+
+        <input type="hidden" name="queryId" th:value="${queryId}">
+        
+        <label for="response">Response:</label><br>
+        <textarea id="response" name="response"></textarea><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    
+</body>
+</html>

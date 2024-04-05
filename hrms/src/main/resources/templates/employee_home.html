@@ -42,6 +42,7 @@
     </style>
 </head>
 <body>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
     <h2>Welcome, <span th:text="${session.username}">Employee</span>!</h2>
     <p>This is the Employee Home page.</p>
     <button>Click Me</button>
