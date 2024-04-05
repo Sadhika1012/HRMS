@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Complaint</title>
+</head>
+<body>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <h2>Post Complaint</h2>
+    <form action="/employee/post_complaint" method="post" th:object="${complaint}">
+        <input type="hidden" id="userId" name="userId" th:value="${userId}">
+        <label for="complaintText">Complaint Text:</label><br>
+        <textarea id="complaintText" name="complaintText" th:field="*{complaintText}"></textarea><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    <a th:href="@{/employee/complaints}"><button>View Complaints History</button></a>
+</body>
+</html>

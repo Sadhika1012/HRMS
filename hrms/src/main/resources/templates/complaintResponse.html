@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Respond to Complaint</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
+    <h2>Respond to Complaint</h2>
+    <form th:action="@{/hr/{complaintId}/response(complaintId=${complaintId})}" method="post">
+
+        <input type="hidden" name="complaintId" th:value="${complaintId}">
+        
+        <label for="resolution">Resolution:</label><br>
+        <textarea id="resolution" name="resolution"></textarea><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    
+</body>
+</html>

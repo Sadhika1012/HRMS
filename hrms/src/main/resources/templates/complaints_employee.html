@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint List</title>
+</head>
+<body>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <h2>Complaint History</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Complaint ID</th>
+                <th>Employee ID</th>
+                <th>Complaint Text</th>
+                <th>Resolution</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="complaint : ${complaints}">
+                <td th:text="${complaint.complaintId}"></td>
+                <td th:text="${complaint.employeeId}"></td>
+                <td th:text="${complaint.complaintText}"></td>
+                <td th:text="${complaint.resolution}"></td>
+                <td th:text="${complaint.status}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
