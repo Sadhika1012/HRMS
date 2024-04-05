@@ -3,6 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Login</title>
+    <style>
+        /* Dark Mode Background */
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Login Form Styles */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            position: fixed; /* Fixed positioning */
+            top: 10px; /* Distance from the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust to center horizontally */
+            z-index: 1; /* Ensure the h2 stays on top */
+        }
+        /*outer box*/
+        form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+
+        div {
+            margin-bottom: 15px;
+            padding-right: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding-left: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        div th:if="${error}" {
+            text-align: center;
+            margin-top: 15px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h2>Employee Login</h2>
@@ -19,7 +94,7 @@
             <button type="submit">Login</button>
         </div>
         <div th:if="${error}">
-            <p style="color: red;">Invalid username or password. Please try again.</p>
+            <p>Invalid username or password. Please try again.</p>
         </div>
     </form>
 </body>

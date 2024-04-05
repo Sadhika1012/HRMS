@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Home</title>
+    <style>
+        /* Dark Mode Background */
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Rounded Edges for Text Boxes */
+        h2, p {
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Styling the Button */
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        /* Additional Styling for Thymeleaf Variables */
+        span {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h2>Welcome, <span th:text="${session.username}">Employee</span>!</h2>
     <p>This is the Employee Home page.</p>
+    <button>Click Me</button>
 </body>
 </html>
