@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>HR Login</title>
+
     <style>
         body {
             background-color: #121212;
@@ -74,6 +75,10 @@
             margin-top: 15px;
             color: red;
         }
+
+        .centered {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -94,10 +99,9 @@
     <div th:if="${error}">
         <p style="color: red;">Invalid username or password. Please try again.</p>
     </div>
-    <div>
-        <a th:href="@{/employee/login}"><button>Login as Employee</button></a>
-    </div>
 </form>
+    
+        <a th:href="@{/employee/login}"><button style="margin-top:270px;margin-inline:-340px;width:310px;height:40px;">Login as Employee</button></a>
 
 </body>
 </html>
