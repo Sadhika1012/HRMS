@@ -68,12 +68,15 @@ CREATE TABLE queries (
 );
 ALTER TABLE queries MODIFY COLUMN query_id INT AUTO_INCREMENT;
 -- Table: payroll_structure
+-- Table: payroll_structure
 CREATE TABLE payroll_structure (
     payroll_id INT PRIMARY KEY,
+    employee_id INT,
     position VARCHAR(50) NOT NULL,
-    base_salary DECIMAL(10, 2) NOT NULL
+    base_salary DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE payroll_structure MODIFY COLUMN payroll_id INT AUTO_INCREMENT;
 -- Table: employee_bonus
 CREATE TABLE employee_bonus (
     bonus_id INT PRIMARY KEY,
