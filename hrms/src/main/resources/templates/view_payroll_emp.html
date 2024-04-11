@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Payroll</title>
+</head>
+<body>
+    <header th:replace="~{fragments/employee_header ::employee_header}"></header>
+    <h2>View Payroll Structures</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Payroll ID</th>
+                <th>Employee ID</th>
+                <th>Position</th>
+                <th>Base Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="payrollStructure : ${payrollStructures}">
+                <td th:text="${payrollStructure.payrollId}"></td>
+                <td th:text="${payrollStructure.employeeId}"></td>
+                <td th:text="${payrollStructure.position}"></td>
+                <td th:text="${payrollStructure.baseSalary}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

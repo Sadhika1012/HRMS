@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Payroll</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <h2>Update Payroll</h2>
+    
+    <form th:action="@{/hr/{payrollId}/add(payrollId=${payrollId})}" method="post">
+
+        <input type="hidden" name="payrollId" th:value="${payrollId}">
+      
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" th:value="${payroll.position}"/><br/>
+
+        <label for="baseSalary">Base Salary:</label>
+        <input type="text" id="baseSalary" name="baseSalary" th:value="${payroll.baseSalary}"/><br/>
+
+        <button type="submit">Update</button>
+    </form>
+    <script th:inline="javascript">
+        function validateForm() {
+            var position = document.getElementById('position').value;
+            var baseSalary = document.getElementById('baseSalary').value;
+            
+            if (position.trim() === '' || baseSalary.trim() === '') {
+                alert('Please fill in all fields.');
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+   
+</body>
+</html>
