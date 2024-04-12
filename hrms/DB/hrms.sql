@@ -85,7 +85,7 @@ CREATE TABLE employee_bonus (
     bonus_reason TEXT,
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE employee_bonus MODIFY COLUMN bonus_id INT AUTO_INCREMENT;
 -- Table: recruitment
 CREATE TABLE recruitment (
     recruitment_id INT PRIMARY KEY,
