@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Bonus</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <h2>Add Bonus</h2>
+    <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+<form th:action="@{/hr/bonus}" method="post">
+    <label for="employeeId">Employee ID:</label>
+    <input type="text" id="employeeId" name="employeeId"/><br/>
+    
+    <label for="bonusAmount">Bonus Amount:</label>
+    <input type="text" id="bonusAmount" name="bonusAmount"/><br/>
+
+    <label for="bonusReason">Bonus Reason:</label>
+    <input type="text" id="bonusReason" name="bonusReason"/><br/>
+
+    <button type="submit">Add Bonus</button>
+</form>
+<a th:href="@{/hr/bonus/view}">
+    <button>View Bonuses</button>
+</a>
+
+    
+   
+</body>
+</html>

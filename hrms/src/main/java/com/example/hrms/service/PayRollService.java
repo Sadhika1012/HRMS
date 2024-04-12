@@ -1,5 +1,6 @@
 package com.example.hrms.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,15 @@ import com.example.hrms.domain.PayRoll;
 import com.example.hrms.repository.PayRollRepository;
 
 
+
 // Service: PayrollStructureService.java
 @Service
 public class PayRollService {
+ 
     @Autowired
     private PayRollRepository payrollStructureRepository;
-
+    
+    
     public PayRoll savePayrollStructure(PayRoll payrollStructure) {
         return payrollStructureRepository.save(payrollStructure);
     }
@@ -27,5 +31,10 @@ public class PayRollService {
     public List<PayRoll> getPayrollByEmployeeId(int employeeId) {
         return payrollStructureRepository.findByEmployeeId(employeeId);
     }
+
+    
+   
+
+    
 }
 
