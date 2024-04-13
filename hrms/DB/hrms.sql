@@ -36,7 +36,7 @@ CREATE TABLE attendance (
     check_out DATETIME,
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE attendance MODIFY COLUMN attendance_id INT AUTO_INCREMENT;
 -- Table: leave_requests
 CREATE TABLE leave_requests (
     leave_request_id INT PRIMARY KEY,
