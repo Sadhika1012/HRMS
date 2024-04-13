@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Attendance</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <h2>Attendance Records</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Attendance ID</th>
+                <th>Employee ID</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="attendance : ${attendances}">
+                <td th:text="${attendance.attendanceId}"></td>
+                <td th:text="${attendance.employeeId}"></td>
+                <td th:text="${attendance.checkIn}"></td>
+                <td th:text="${attendance.checkOut}"></td>
+                <td><a th:href="@{/hr/attendance/{id}(id=${attendance.attendanceId})}">Update</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/hr/add_attendance}">
+        <button>Add Attendance</button>
+        </a>
+</body>
+</html>

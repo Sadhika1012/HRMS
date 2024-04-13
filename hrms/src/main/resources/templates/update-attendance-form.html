@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Attendance Form</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <h1>Update Attendance</h1>
+    <form th:action="@{/hr/attendance}" th:object="${updateAttendanceRequest}" method="post">
+        <input type="hidden" name="attendanceId" th:value="${attendanceId}">
+    
+        <label for="checkOut">Check Out:</label>
+        <input type="datetime-local" th:field="*{checkOut}" required><br>
+        <button type="submit">Update Attendance</button>
+    </form>
+</body>
+</html>
