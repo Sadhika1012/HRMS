@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>HR Home</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column; /* Added to center align content vertically */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 60px;
+
+        }
+
+        p {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        span {
+            font-weight: bold;
+            color: #FF4500; /* Adjusted color for username */
+        }
+    </style>
 </head>
 <body>
-    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
-    <h2>Welcome, <span th:text="${session.username}">HR</span>!</h2>
+    <h2>Welcome <span th:text="${session.username}">HR</span>!</h2>
     <p>This is the HR Home page.</p>
+    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
+    
 </body>
 </html>
