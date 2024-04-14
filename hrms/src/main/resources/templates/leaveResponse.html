@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Respond to Leave Request</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
+    <h2>Respond to Leave Request</h2>
+    <form th:action="@{/hr/{leaveRequestId}/approve(leaveRequestId=${leaveRequestId})}" method="post">
+
+        <input type="hidden" name="leaveRequestId" th:value="${leaveRequestId}">
+        <label for="approvalStatus">Approval Status:</label>
+        <select id="approvalStatus" name="approvalStatus" required>
+            <option value="APPROVED">Approved</option>
+            <option value="REJECTED">Rejected</option>
+        </select>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

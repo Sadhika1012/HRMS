@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Leave Requests</title>
+</head>
+<body>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <h2>Your Leave Requests</h2>
+    <table border="1">
+        <tr>
+            <th>Leave ID</th>
+            <th>Employee ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+        </tr>
+        <tr th:each="leave : ${leaves}">
+            <td th:text="${leave.leaveRequestId}"></td>
+            <td th:text="${leave.employeeId}"></td>
+            <td th:text="${leave.startDate}"></td>
+            <td th:text="${leave.endDate}"></td>
+            <td th:text="${leave.approvalStatus}"></td>
+        </tr>
+    </table>
+</body>
+</html>
