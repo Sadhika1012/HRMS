@@ -20,6 +20,7 @@ public class PayRoll {
 
     @Column(name = "employee_id")
     private int employeeId;
+    
 
     @Column(name = "position", nullable = false)
     private String position;
