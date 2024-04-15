@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave Request Form</title>
+</head>
+<body>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <h2>Leave Request Form</h2>
+    <form action="/employee/post_leave" method="post">
+        <input type="hidden" id="userId" name="userId" th:value="${userId}">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+        <br>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+        <br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <a th:href="@{/employee/leaves}"><button>View Leave History</button></a>
+</body>
+</html>

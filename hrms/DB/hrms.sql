@@ -36,7 +36,7 @@ CREATE TABLE attendance (
     check_out DATETIME,
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE attendance MODIFY COLUMN attendance_id INT AUTO_INCREMENT;
 -- Table: leave_requests
 CREATE TABLE leave_requests (
     leave_request_id INT PRIMARY KEY,
@@ -46,7 +46,8 @@ CREATE TABLE leave_requests (
     status ENUM('PENDING', 'APPROVED', 'REJECTED') DEFAULT 'PENDING',
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
-
+ALTER TABLE leave_requests RENAME COLUMN status TO approval;
+ALTER TABLE leave_requests MODIFY COLUMN leave_request_id INT AUTO_INCREMENT;
 -- Table: complaints
 CREATE TABLE complaints (
     complaint_id INT PRIMARY KEY,

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Attendance Form</title>
+</head>
+<body>
+    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <h1>Add Attendance</h1>
+    <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
+    <form th:action="@{/hr/add_attendance}" th:object="${addAttendanceRequest}" method="post">
+        <label for="employeeId">Employee ID:</label>
+        <input type="text" th:field="*{employeeId}" required><br>
+        <label for="checkIn">Check In:</label>
+        <input type="datetime-local" th:field="*{checkIn}" required><br>
+        <button type="submit">Add Attendance</button>
+    </form>
+    <a th:href="@{/hr/attendance_view}">
+        <button>View Attendance</button>
+        </a>
+</body>
+</html>
