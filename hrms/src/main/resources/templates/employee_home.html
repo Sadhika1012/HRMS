@@ -10,29 +10,28 @@
             color: white;
             font-family: Arial, sans-serif;
             transition: background-color 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh; /* Adjusted height to take full viewport height */
+            margin: 0; /* Removed default margin */
         }
 
         /* Rounded Edges for Text Boxes */
-        h2, p {
-            border-radius: 10px;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
+        h2 {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center; /* Center align the text */
+            font-size: 60px;
+
         }
 
-        /* Styling the Button */
-        button {
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 15px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #555;
-            transform: scale(1.05);
+        p {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center; /* Center align the text */
+            font-size: 30px;
         }
 
         /* Additional Styling for Thymeleaf Variables */
@@ -42,9 +41,9 @@
     </style>
 </head>
 <body>
-    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
-    <h2>Welcome, <span th:text="${session.username}">Employee</span>!</h2>
+    <h2>Welcome <span th:text="${session.username}">Employee</span>!</h2>
     <p>This is the Employee Home page.</p>
-    <button>Click Me</button>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    
 </body>
 </html>

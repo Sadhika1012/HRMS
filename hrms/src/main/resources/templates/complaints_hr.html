@@ -3,11 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Complaint List</title>
+    <style>
+        /* Dark Mode Background */
+        body {
+            background-color: #000000 !important;
+            color: white;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+            margin: 0; /* Resetting default margin */
+            padding: 0; /* Resetting default padding */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Table Styles */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto; /* Centering the table horizontally and adding margin at the top */
+            background-color: rgba(255, 255, 255, 0.1); /* Adding some transparency */
+        }
+
+        h2 {
+            text-align: center; /* Center align the text */
+            font-size: 36px; /* Increased font size */
+            margin-top: 20px; /* Added margin at the top */
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+            color: white; /* Table text color */
+        }
+
+        th {
+            background-color: #333;
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+            transform: scale(1.05);
+            color: black;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .nav-item {
+            margin: 0 15px; /* Adjust the margin as per your need */
+        }
+
+        /* Center align the text of the navbar links */
+        .nav-link {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    
     <h2>Complaint List</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Complaint ID</th>
@@ -15,6 +85,7 @@
                 <th>Complaint Text</th>
                 <th>Resolution</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,11 +97,12 @@
                 <td th:text="${complaint.status}"></td>
                 <td>
                     <a th:href="@{/hr/{complaintId}/response(complaintId=${complaint.complaintId})}">
-                    <button>Respond</button>
+                        <button>Respond</button>
                     </a>
                 </td>
             </tr>
         </tbody>
     </table>
+    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
 </body>
 </html>

@@ -3,11 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Complaint List</title>
+    <style>
+        /* Dark Mode Background */
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh; /* Adjusted height to take full viewport height */
+            margin: 0; /* Removed default margin */
+        }
+
+        /* Rounded Edges for Text Boxes */
+        h2 {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center; /* Center align the text */
+            font-size: 60px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Adding some transparency */
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+            color: white; /* Table text color */
+        }
+
+        th {
+            background-color: #333;
+        }
+
+        /* Additional Styling for Thymeleaf Variables */
+        span {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header th:replace="~{fragments/employee_header :: employee_header}"></header>
     <h2>Complaint History</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Complaint ID</th>
