@@ -3,20 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Attendance Form</title>
+    <style>
+        /* Dark Mode Background */
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh; /* Adjusted height to take full viewport height */
+            margin: 0; /* Removed default margin */
+        }
+
+        /* Rounded Edges for Text Boxes */
+        h1 {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center; /* Center align the text */
+            font-size: 60px;
+        }
+
+        p {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center; /* Center align the text */
+            font-size: 30px;
+            color: red;
+        }
+
+        .form-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-top: 10px; /* Adjusted margin for better spacing */
+            font-size: 30px;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: 350px;
+            padding: 10px;
+            margin-top: 5px; /* Adjusted margin for better spacing */
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            margin-top: 20px; /* Adjusted margin for better spacing */
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 30px;
+            width: 100%; /* Make button width 100% to fill the container */
+        }
+
+        button:hover {
+            background-color: white;
+            transform: scale(1.05);
+            color: black;
+        }
+
+        a {
+            text-decoration: none;
+            width: 100%; /* Make link width 100% to fill the container */
+        }
+
+    </style>
 </head>
 <body>
     <header th:replace="~{fragments/hr_header ::hr_header}"></header>
     <h1>Add Attendance</h1>
-    <p th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></p>
-    <form th:action="@{/hr/add_attendance}" th:object="${addAttendanceRequest}" method="post">
-        <label for="employeeId">Employee ID:</label>
-        <input type="text" th:field="*{employeeId}" required><br>
-        <label for="checkIn">Check In:</label>
-        <input type="datetime-local" th:field="*{checkIn}" required><br>
-        <button type="submit">Add Attendance</button>
-    </form>
-    <a th:href="@{/hr/attendance_view}">
-        <button>View Attendance</button>
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+    <div class="form-box">
+        <form th:action="@{/hr/add_attendance}" th:object="${addAttendanceRequest}" method="post">
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" th:field="*{employeeId}" required><br>
+            <label for="checkIn">Check In:</label>
+            <input type="datetime-local" th:field="*{checkIn}" required><br>
+            <button type="submit">Add Attendance</button>
+        </form>
+        <a th:href="@{/hr/attendance_view}">
+            <button>View Attendance</button>
         </a>
+    </div>
 </body>
 </html>
