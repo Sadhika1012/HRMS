@@ -68,4 +68,3 @@ public class PayRoll {
         this.baseSalary = baseSalary;
     }
 }
-
