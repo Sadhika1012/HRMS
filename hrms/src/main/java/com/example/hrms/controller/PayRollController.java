@@ -41,6 +41,7 @@ public class PayRollController {
         model.addAttribute("payrollStructures", payrollStructures);
         return "view_payroll";
     }
+    
     // Other controller methods as needed
     @GetMapping("/employee/payroll")
     public String showEmployeeComplaintList(Model model, HttpSession session) {

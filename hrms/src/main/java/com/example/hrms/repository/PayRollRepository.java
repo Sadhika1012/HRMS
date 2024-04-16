@@ -11,5 +11,6 @@ import com.example.hrms.domain.PayRoll;
 @Repository
 public interface PayRollRepository extends JpaRepository<PayRoll, Integer> {
     // You can add custom methods if needed
+    
     List<PayRoll> findByEmployeeId(int employeeId);
 }
