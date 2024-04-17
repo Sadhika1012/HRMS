@@ -49,12 +49,13 @@ CREATE TABLE leave_requests (
 ALTER TABLE leave_requests RENAME COLUMN status TO approval;
 ALTER TABLE leave_requests MODIFY COLUMN leave_request_id INT AUTO_INCREMENT;
 -- Table: complaints
+-- Table: complaints
 CREATE TABLE complaints (
     complaint_id INT PRIMARY KEY,
     employee_id INT,
     complaint_text TEXT NOT NULL,
     resolution TEXT,
-    status ENUM('OPEN', 'CLOSED') DEFAULT 'OPEN',
+    status ENUM('OPEN', 'CLOSED','HIGH_PRIORITY') DEFAULT 'OPEN',
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
 ALTER TABLE complaints MODIFY COLUMN complaint_id INT AUTO_INCREMENT;
