@@ -21,6 +21,10 @@ public class LeaveRequest {
     @Column(name = "employee_id")
     private int employeeId;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "leave_type")
+    private LeaveType leaveType;
+
     @Column(name = "start_date")
     private LocalDate startDate;
 
@@ -36,8 +40,9 @@ public class LeaveRequest {
     }
 
     // Constructor without builder pattern
-    public LeaveRequest(int employeeId, LocalDate startDate, LocalDate endDate, ApprovalStatus approvalStatus) {
+    public LeaveRequest(int employeeId,LeaveType leaveType, LocalDate startDate, LocalDate endDate, ApprovalStatus approvalStatus) {
         this.employeeId = employeeId;
+        this.leaveType= leaveType;
         this.startDate = startDate;
         this.endDate = endDate;
         this.approvalStatus = approvalStatus;
@@ -59,6 +64,14 @@ public class LeaveRequest {
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public LeaveType getLeaveType() {
+        return leaveType;
+    }
+
+    public void setLeaveType(LeaveType leaveType) {
+        this.leaveType = leaveType;
     }
 
     public LocalDate getStartDate() {

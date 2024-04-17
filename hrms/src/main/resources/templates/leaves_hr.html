@@ -11,6 +11,7 @@
         <tr>
             <th>Leave ID</th>
             <th>Employee ID</th>
+            <th>Leave Type</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Status</th>
@@ -18,12 +19,13 @@
         <tr th:each="leave : ${leaves}">
             <td th:text="${leave.leaveRequestId}"></td>
             <td th:text="${leave.employeeId}"></td>
+            <td th:text="${leave.leaveType}"></td> <!-- Added leaveType column -->
             <td th:text="${leave.startDate}"></td>
             <td th:text="${leave.endDate}"></td>
             <td th:text="${leave.approvalStatus}"></td>
             <td>
                 <a th:href="@{/hr/{leaveRequestId}/approve(leaveRequestId=${leave.leaveRequestId})}">
-                <button>Respond</button>
+                    <button>Respond</button>
                 </a>
             </td>
         </tr>

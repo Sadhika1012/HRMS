@@ -1,6 +1,7 @@
 package com.example.hrms.controller;
 
 import com.example.hrms.domain.LeaveRequest;
+import com.example.hrms.domain.LeaveType;
 import com.example.hrms.domain.ApprovalStatus;
 import com.example.hrms.service.LeaveService;
 
@@ -34,12 +35,13 @@ public class LeaveController {
     }
 
     @PostMapping("/employee/post_leave")
-    public String postLeaveRequest(@RequestParam("startDate") LocalDate startDate,
+    public String postLeaveRequest(@RequestParam("leaveType") LeaveType leaveType,
+                                   @RequestParam("startDate") LocalDate startDate,
                                    @RequestParam("endDate") LocalDate endDate,
                                    @RequestParam("userId") Integer userId,
                                    HttpSession session) {
         if (userId != null) {
-            LeaveRequest leaveRequest = new LeaveRequest(userId, startDate, endDate, ApprovalStatus.PENDING);
+            LeaveRequest leaveRequest = new LeaveRequest(userId,leaveType, startDate, endDate, ApprovalStatus.PENDING);
             leaveService.postLeaveRequest(leaveRequest);
             return "redirect:/employee/leaves";
         } else {
