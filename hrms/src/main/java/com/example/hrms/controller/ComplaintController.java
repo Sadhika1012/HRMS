@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.hrms.domain.Complaint;
 import com.example.hrms.domain.Status;
+import com.example.hrms.domain.decorators.UrgentComplaintDecorator;
 import com.example.hrms.service.ComplaintService;
 
 import jakarta.servlet.http.HttpSession;
@@ -22,7 +23,7 @@ public class ComplaintController {
     private ComplaintService complaintService;
 
     @GetMapping("/employee/post_complaint")
-public String showPostQueryForm(Model model, HttpSession session) {
+public String showPostComplaintForm(Model model, HttpSession session) {
     // Retrieve userId from session
     Integer userId = (Integer) session.getAttribute("userId");
     
@@ -42,11 +43,19 @@ public String showPostQueryForm(Model model, HttpSession session) {
     public String postComplaint(@RequestParam("complaintText") String complaintText, @RequestParam("userId") Integer userId, HttpSession session) {
         // Check if userId is not null
         if (userId != null) {
-            // Create a new Query object with the provided queryText and userId
-            Complaint complaint = new Complaint(userId, complaintText, null,  Status.OPEN);
-    
-            // Post the query
-            complaintService.postComplaint(complaint);
+            // Create a new Complaint object with the provided complaintText and userId
+        Complaint complaint = new Complaint(userId, complaintText, null,  Status.OPEN);
+        
+        // Wrap the complaint with UrgentComplaintDecorator if needed
+        UrgentComplaintDecorator urgentComplaint = new UrgentComplaintDecorator(complaint);
+
+        // Apply escalation logic
+        urgentComplaint.escalate(); // Apply escalation logic
+        
+        
+        // Post the complaint
+        complaintService.postComplaint(urgentComplaint.getComplaint()); // Pass the original complaint
+        
     
             // Redirect to query list page
             return "redirect:/employee/complaints";
