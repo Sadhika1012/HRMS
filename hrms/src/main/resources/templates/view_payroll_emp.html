@@ -4,44 +4,83 @@
     <meta charset="UTF-8">
     <title>View Payroll</title>
     <style>
+        /* Dark Mode Background */
         body {
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center the content horizontally */
-            justify-content: center; /* Center the content vertically */
-            height: 100vh;
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh; /* Adjusted height to take full viewport height */
+            margin: 0; /* Removed default margin */
         }
 
-        h2 {
+        /* Centered Navbar */
+        header {
+            width: 100%;
             text-align: center;
-            margin-bottom: 20px;
+            background-color: #121212; /* Same color as the page background */
+            padding: 20px 0;
+            margin-bottom: 20px; /* Added margin at the bottom */
+            box-sizing: border-box; /* Ensure padding and border included in width */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+        }
+
+        /* Rounded Edges for Text Boxes */
+        h2 {
+            padding: 15px; /* Increased padding for better spacing */
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center; /* Center align the text */
             font-size: 60px;
         }
 
+        /* Table Styles */
         table {
-            border-collapse: collapse;
             width: 80%;
+            border-collapse: collapse;
             margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Adding some transparency */
         }
 
         th, td {
             border: 1px solid white;
-            padding: 10px;
-            text-align: left;
-            color: white; /* Set text color to white */
+            padding: 8px;
+            text-align: center;
+            color: white; /* Table text color */
         }
 
         th {
-            background-color: black; /* Set header background color to black */
+            background-color: #333;
         }
 
-        td {
-            background-color: #333333;
+        /* Additional Styling for Thymeleaf Variables */
+        span {
+            font-weight: bold;
+        }
+
+        /* Button Styles */
+        input[type="submit"],
+        .view-complaints button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            border-radius: 15px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"]:hover,
+        .view-complaints button:hover {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            transform: scale(1.05);
         }
     </style>
 </head>
