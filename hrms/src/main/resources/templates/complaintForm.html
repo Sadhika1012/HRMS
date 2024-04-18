@@ -3,17 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <title>Post Complaint</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 15px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            transform: scale(1.05);
+        }
+
+        .image-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .image-input input[type="file"] {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .view-complaints {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header th:replace="~{fragments/employee_header :: employee_header}"></header>
     <h2>Post Complaint</h2>
     <form action="/employee/post_complaint" method="post" th:object="${complaint}">
         <input type="hidden" id="userId" name="userId" th:value="${userId}">
+        
         <label for="complaintText">Complaint Text:</label><br>
         <textarea id="complaintText" name="complaintText" th:field="*{complaintText}"></textarea><br>
-        
         <input type="submit" value="Submit">
     </form>
-    <a th:href="@{/employee/complaints}"><button>View Complaints History</button></a>
+    <div class="view-complaints">
+        <a th:href="@{/employee/complaints}"><button>View Complaints History</button></a>
+    </div>
 </body>
 </html>
