@@ -9,63 +9,76 @@
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
-            transition: background-color 0.5s ease;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: black;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .navbar a:hover {
+            background-color: white;
+        }
+
+        /* Form Styles */
+        .form-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            height: 100vh; /* Adjusted height to take full viewport height */
-            margin: 0; /* Removed default margin */
-        }
-
-        /* Rounded Edges for Text Boxes */
-        h2 {
-            padding: 15px; /* Increased padding for better spacing */
-            background-color: rgba(0, 0, 0, 0);
-            text-align: center; /* Center align the text */
-            font-size: 60px;
-        }
-
-        p {
-            padding: 15px; /* Increased padding for better spacing */
-            background-color: rgba(0, 0, 0, 0);
-            text-align: center; /* Center align the text */
-            font-size: 30px;
-            color: red;
+            justify-content: center;
+            padding: 50px 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-box {
-            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 15px;
-            background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
         }
 
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         label {
-            margin-top: 10px; /* Adjusted margin for better spacing */
+            margin-top: 10px;
             font-size: 30px;
         }
 
         input[type="text"] {
-            width: 350px;
+            width: 100%;
+            max-width: 350px;
             padding: 10px;
-            margin-top: 5px; /* Adjusted margin for better spacing */
+            margin-top: 5px;
             border-radius: 5px;
             border: none;
         }
 
-        button {
-            margin-top: 20px; /* Adjusted margin for better spacing */
+        .form-button {
+            margin-top: 20px;
             background-color: #333;
             color: white;
             border: none;
@@ -74,42 +87,60 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             font-size: 30px;
-            width: 100%; /* Make button width 100% to fill the container */
+            width: 100%;
+            max-width: 350px;
         }
 
-        button:hover {
+        .form-button:hover {
             background-color: white;
             transform: scale(1.05);
             color: black;
         }
 
-        a {
-            text-decoration: none;
-            width: 100%; /* Make link width 100% to fill the container */
+        /* Center the buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
         }
 
     </style>
 </head>
 <body>
-    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
-    <h2>Add Bonus</h2>
-    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
-    <div class="form-box">
-        <form th:action="@{/hr/bonus}" method="post">
-            <label for="employeeId">Employee ID:</label>
-            <input type="text" id="employeeId" name="employeeId"/><br/>
-            
-            <label for="bonusAmount">Bonus Amount:</label>
-            <input type="text" id="bonusAmount" name="bonusAmount"/><br/>
+    <header th:replace="~{fragments/hr_header ::hr_header}">
+        <div class="navbar">
+            <a th:href="@{/hr/home}">Home</a>
+            <a th:href="@{/hr/queries}">View Queries</a>
+            <a th:href="@{/hr/complaints}">View Complaints</a>
+            <a th:href="@{/hr/payroll/view}">View Payroll Structures</a>
+            <a th:href="@{/hr/bonus}">Add Bonus</a>
+            <a th:href="@{/hr/attendance_view}">View Attendance Records</a>
+            <a th:href="@{/hr/leaves}">View Leave Requests</a>
+        </div>
+    </header>
+    <div class="form-container">
+        <h2>Add Bonus</h2>
+        <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+        <div class="form-box">
+            <form th:action="@{/hr/bonus}" method="post">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId"/>
+                
+                <label for="bonusAmount">Bonus Amount:</label>
+                <input type="text" id="bonusAmount" name="bonusAmount"/>
 
-            <label for="bonusReason">Bonus Reason:</label>
-            <input type="text" id="bonusReason" name="bonusReason"/><br/>
+                <label for="bonusReason">Bonus Reason:</label>
+                <input type="text" id="bonusReason" name="bonusReason"/>
 
-            <button type="submit">Add Bonus</button>
-        </form>
-        <a th:href="@{/hr/bonus/view}">
-            <button>View Bonuses</button>
-        </a>
+                <button class="form-button" type="submit">Add Bonus</button>
+            </form>
+            <div class="button-container">
+                <a th:href="@{/hr/bonus/view}">
+                    <button class="form-button">View Bonuses</button>
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

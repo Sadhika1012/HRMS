@@ -1,57 +1,43 @@
 <header th:fragment="hr_header">
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <div class="collapse navbar-collapse" id="topNavbar">
-          <div class="row">
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/home}" style="margin-bottom: 10px;">Home</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/queries}" style="margin-bottom: 10px;">View Queries</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/complaints}" style="margin-bottom: 10px;">View Complaints</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/payroll/view}" style="margin-bottom: 10px;">View Payroll Structures</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/bonus}" style="margin-bottom: 10px;">Add Bonus</a>
-              </div>
-              <div class="col-md-6">
-                <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/attendance_view}" style="margin-bottom: 10px;">View Attendance Records</a>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position: fixed; top: 0; width: 100%;">
+        <div class="collapse navbar-collapse" id="topNavbar">
+            <div class="d-flex flex-row justify-content-start align-items-center">
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/home}" style="font-size: 18px;">Home</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/queries}" style="font-size: 18px;">View Queries</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/complaints}" style="font-size: 18px;">View Complaints</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/payroll/view}" style="font-size: 18px;">View Payroll</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/bonus}" style="font-size: 18px;">Add Bonus</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/attendance_view}" style="font-size: 18px;">View Attendance</a>
+                <a class="nav-link btn btn-light rounded-0 text-white" th:href="@{/hr/leaves}" style="font-size: 18px;">View Leave Requests</a>
             </div>
-            <div class="col-md-6">
-                <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/hr/leaves}" style="margin-bottom: 10px;">View Leave Requests</a>
-            </div>
-          </div>
-      </div>
-  </nav>
-
-  <style>
-      .btn-light {
-          border: none;
-          transition: background-color 0.3s ease, color 0.3s ease;
-          font-size: 30px;
-      }
-
-      .btn-light:hover {
-          background-color: #ffffff;
-          color: #000000;
-      }
-
-      .nav-link {
-        border-radius: 20px;
-        text-decoration: none;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-        width: 350px;
-      }
-
-      .nav-link:focus, .nav-link:hover {
+        </div>
+    </nav>
+  
+    <style>
+        .btn-light {
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px;
+            padding: 8px 12px; /* Adjusted padding for button size */
+        }
+  
+        .btn-light:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+  
+        .nav-link {
+          border-radius: 15px;
           text-decoration: none;
-      }
-  </style>
-</header>
+          color: white;
+          display: inline-block;
+          height: 35px; /* Adjusted height for smaller buttons */
+          margin-right: 8px; /* Adjusted margin for spacing between buttons */
+        }
+  
+        .nav-link:focus, .nav-link:hover {
+            text-decoration: none;
+        }
+    </style>
+  </header>
+  
