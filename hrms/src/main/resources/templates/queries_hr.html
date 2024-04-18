@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Query List</title>
-    <meta charset="UTF-8">
-    <title>Post Query</title>
     <style>
         body {
             background-color: #121212;
@@ -12,13 +10,41 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: black;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            width: 100%;
+            padding: 10px 0;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .navbar a:hover {
+            background-color: white;
         }
 
         h2 {
             text-align: center;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -67,10 +93,48 @@
             margin-top: 20px;
             text-align: center;
         }
+
+        /* Center the table */
+        table {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
     </style>
 </head>
 <body>
-    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
+    <header th:replace="~{fragments/hr_header :: hr_header}">
+        <div class="navbar">
+            <a th:href="@{/hr/home}">Home</a>
+            <a th:href="@{/hr/queries}">View Queries</a>
+            <a th:href="@{/hr/complaints}">View Complaints</a>
+            <a th:href="@{/hr/payroll/view}">View Payroll Structures</a>
+            <a th:href="@{/hr/bonus}">Add Bonus</a>
+            <a th:href="@{/hr/attendance_view}">View Attendance Records</a>
+            <a th:href="@{/hr/leaves}">View Leave Requests</a>
+        </div>
+    </header>
     <h2>Query List</h2>
     <table border="1">
         <thead>
@@ -94,8 +158,6 @@
                     <button>Respond</button>
                     </a>
                 </td>
-
-              
             </tr>
         </tbody>
     </table>
