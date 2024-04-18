@@ -3,6 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>Respond to Leave Request</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
+            justify-content: center; /* Center the content vertically */
+            height: 100vh;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 60px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        span {
+            font-weight: bold;
+            color: #FF4500; /* Adjusted color for username */
+        }
+
+        /* Adjust the hr_header style to make it stick to the top left */
+        header {
+            width: 100%; /* Make the header take the full width */
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: flex-start; /* Start from the left */
+        }
+
+        .btn-light {
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 24px; /* Decreased font size */
+            margin-right: 10px; /* Added margin between buttons */
+        }
+
+        .btn-light:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .nav-link {
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px; /* Decreased button height */
+            padding: 0 15px; /* Added padding to buttons */
+        }
+
+        .nav-link:focus, .nav-link:hover {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <header th:replace="~{fragments/hr_header :: hr_header}"></header>

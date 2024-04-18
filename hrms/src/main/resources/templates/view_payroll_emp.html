@@ -3,6 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>View Payroll</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
+            justify-content: center; /* Center the content vertically */
+            height: 100vh;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 60px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: left;
+            color: white; /* Set text color to white */
+        }
+
+        th {
+            background-color: black; /* Set header background color to black */
+        }
+
+        td {
+            background-color: #333333;
+        }
+    </style>
 </head>
 <body>
     <header th:replace="~{fragments/employee_header ::employee_header}"></header>
