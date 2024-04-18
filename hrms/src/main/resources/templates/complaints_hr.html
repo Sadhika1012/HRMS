@@ -94,6 +94,11 @@
                 <td th:text="${complaint.complaintText}"></td>
                 <td th:text="${complaint.resolution}"></td>
                 <td th:text="${complaint.status}"></td>
+                <td>
+                    <a th:href="@{/hr/{complaintId}/response(complaintId=${complaint.complaintId})}">
+                    <button>Respond</button>
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>

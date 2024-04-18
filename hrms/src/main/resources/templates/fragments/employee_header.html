@@ -1,57 +1,50 @@
 <header th:fragment="employee_header">
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <div class="collapse navbar-collapse" id="topNavbar">
-          <div class="row">
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/home}" style="margin-bottom: 10px;">Home</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/post}" style="margin-bottom: 10px;">Post Query</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/post_complaint}" style="margin-bottom: 10px;">Post Complaint</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/payroll}" style="margin-bottom: 10px;">View Payroll</a>
-              </div>
-              <div class="col-md-6">
-                  <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/bonus}" style="margin-bottom: 10px;">View Bonuses</a>
-              </div>
-              <div class="col-md-6">
-                <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/attendance}" style="margin-bottom: 10px;">View Attendance</a>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position: fixed; top: 0; width: 100%;">
+        <div class="collapse navbar-collapse" id="topNavbar">
+            <div class="d-flex justify-content-center align-items-center"> <!-- Changed to justify-content-center -->
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/employee/home}" style="font-size: 18px;">Home</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/employee/post}" style="font-size: 18px;">Post Query</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/employee/post_complaint}" style="font-size: 18px;">Post Complaint</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/employee/payroll}" style="font-size: 18px;">View Payroll</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/employee/bonus}" style="font-size: 18px;">View Bonuses</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/employee/attendance}" style="font-size: 18px;">View Attendance</a>
+                <a class="nav-link btn btn-light rounded-0 text-white" th:href="@{/employee/post_leave}" style="font-size: 18px;">Post Leave Request</a>
             </div>
-            <div class="col-md-6">
-              <a class="nav-link btn btn-light rounded-0 text-white btn-block" th:href="@{/employee/post_leave}" style="margin-bottom: 10px;">Post Leave Request</a>
-          </div>
-          </div>
-      </div>
-  </nav>
+        </div>
+    </nav>
 
-  <style>
-      .btn-light {
-          border: none;
-          transition: background-color 0.3s ease, color 0.3s ease;
-          font-size: 30px;
-      }
+    <style>
+        .btn-light {
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px;
+            padding: 8px 12px; /* Adjusted padding for button size */
+        }
 
-      .btn-light:hover {
-          background-color: #ffffff;
-          color: #000000;
-      }
+        .btn-light:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
 
-      .nav-link {
-          border-radius: 20px;
-          text-decoration: none;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 60px;
-          width: 350px;
-      }
+        .nav-link {
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            height: 35px; /* Adjusted height for smaller buttons */
+            margin-right: 8px; /* Adjusted margin for spacing between buttons */
+        }
 
-      .nav-link:focus, .nav-link:hover {
-          text-decoration: none;
-      }
-  </style>
+        .nav-link:focus, .nav-link:hover {
+            text-decoration: none;
+        }
+
+        .navbar {
+            width: 100%;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+    </style>
 </header>
