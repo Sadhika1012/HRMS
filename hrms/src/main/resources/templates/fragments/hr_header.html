@@ -1,92 +1,29 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Query List</title>
+<header th:fragment="hr_header">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="position: fixed; top: 0; width: 100%;">
+        <div class="collapse navbar-collapse" id="topNavbar">
+            <div class="d-flex flex-row justify-content-start align-items-center">
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/home}" style="font-size: 18px;">Home</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/queries}" style="font-size: 18px;">View Queries</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/complaints}" style="font-size: 18px;">View Complaints</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/payroll/view}" style="font-size: 18px;">View Payroll</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/bonus}" style="font-size: 18px;">Add Bonus</a>
+                <a class="nav-link btn btn-light rounded-0 text-white mr-2" th:href="@{/hr/attendance_view}" style="font-size: 18px;">View Attendance</a>
+                <a class="nav-link btn btn-light rounded-0 text-white" th:href="@{/hr/leaves}" style="font-size: 18px;">View Leave Requests</a>
+            </div>
+        </div>
+    </nav>
+  
     <style>
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 10px 0;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: white;
-            margin: 0 15px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            font-size: 20px;
-        }
-
-        .navbar a:hover {
-            background-color: white;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        form {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 10px;
-            width: 300px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-radius: 15px;
+        .btn-light {
             border: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            resize: vertical;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px;
+            padding: 8px 12px; /* Adjusted padding for button size */
         }
-
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 15px;
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        input[type="submit"]:hover {
+  
+        .btn-light:hover {
             background-color: #ffffff;
-            color: rgb(0, 0, 0);
-            transform: scale(1.05);
+            color: #000000;
         }
   
         .nav-link {
@@ -97,50 +34,9 @@
           height: 35px; /* Adjusted height for smaller buttons */
           margin-right: 8px; /* Adjusted margin for spacing between buttons */
         }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+  
+        .nav-link:focus, .nav-link:hover {
+            text-decoration: none;
         }
-
     </style>
-</head>
-<body>
-    <header th:replace="~{fragments/hr_header :: hr_header}">
-        <div class="navbar">
-            <a th:href="@{/hr/home}">Home</a>
-            <a th:href="@{/hr/queries}">View Queries</a>
-            <a th:href="@{/hr/complaints}">View Complaints</a>
-            <a th:href="@{/hr/payroll/view}">View Payroll Structures</a>
-            <a th:href="@{/hr/bonus}">Add Bonus</a>
-            <a th:href="@{/hr/attendance_view}">View Attendance Records</a>
-            <a th:href="@{/hr/leaves}">View Leave Requests</a>
-        </div>
-    </header>
-    <h2>Query List</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Query ID</th>
-                <th>Employee ID</th>
-                <th>Query Text</th>
-                <th>Response</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="query : ${queries}">
-                <td th:text="${query.queryId}"></td>
-                <td th:text="${query.employeeId}"></td>
-                <td th:text="${query.queryText}"></td>
-                <td th:text="${query.response}"></td>
-                <td th:text="${query.status}"></td>
-                <td>
-                    <a th:href="@{/hr/{queryId}/respond(queryId=${query.queryId})}">
-                    <button>Respond</button>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>
+  </header>
