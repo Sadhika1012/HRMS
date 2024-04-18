@@ -12,8 +12,31 @@
             transition: background-color 0.5s ease;
             margin: 0; /* Resetting default margin */
             padding: 0; /* Resetting default padding */
-            flex-direction: column;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
             align-items: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .navbar a:hover {
+            background-color: white;
+            color: black;
         }
 
         /* Table Styles */
@@ -26,7 +49,7 @@
 
         h2 {
             text-align: center; /* Center align the text */
-            font-size: 36px; /* Increased font size */
+            font-size: 50px; /* Increased font size */
             margin-top: 20px; /* Added margin at the top */
         }
 
@@ -75,6 +98,22 @@
     </style>
 </head>
 <body>
+    <header th:replace="~{fragments/hr_header :: hr_header}">
+        <div class="navbar">
+            <a th:href="@{/hr/home}">Home</a>
+            <a th:href="@{/hr/queries}">View Queries</a>
+            <a th:href="@{/hr/complaints}">View Complaints</a>
+            <a th:href="@{/hr/payroll/view}">View Payroll Structures</a>
+            <a th:href="@{/hr/bonus}">Add Bonus</a>
+            <a th:href="@{/hr/attendance_view}">View Attendance Records</a>
+            <a th:href="@{/hr/leaves}">View Leave Requests</a>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <h2>Complaint List</h2>
     <table>
         <thead>
@@ -102,6 +141,5 @@
             </tr>
         </tbody>
     </table>
-    <header th:replace="~{fragments/hr_header :: hr_header}"></header>
 </body>
 </html>

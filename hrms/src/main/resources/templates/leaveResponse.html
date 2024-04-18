@@ -10,11 +10,11 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center the content horizontally */
-            justify-content: center; /* Center the content vertically */
+            align-items: center;
+            justify-content: center;
             height: 100vh;
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            margin: 0;
+            padding: 0;
         }
 
         h2 {
@@ -30,25 +30,26 @@
 
         span {
             font-weight: bold;
-            color: #FF4500; /* Adjusted color for username */
+            color: #FF4500;
         }
 
-        /* Adjust the hr_header style to make it stick to the top left */
         header {
-            width: 100%; /* Make the header take the full width */
+            width: 100%;
         }
 
         .navbar {
             display: flex;
-            flex-wrap: wrap; /* Allow items to wrap to the next line */
-            justify-content: flex-start; /* Start from the left */
+            justify-content: center; /* Center the navbar */
+            width: 100%;
+            background-color: #121212;
+            padding: 10px 0;
         }
 
         .btn-light {
             border: none;
             transition: background-color 0.3s ease, color 0.3s ease;
-            font-size: 24px; /* Decreased font size */
-            margin-right: 10px; /* Added margin between buttons */
+            font-size: 24px;
+            margin-right: 10px;
         }
 
         .btn-light:hover {
@@ -63,28 +64,82 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 50px; /* Decreased button height */
-            padding: 0 15px; /* Added padding to buttons */
+            height: 50px;
+            padding: 0 15px;
         }
 
         .nav-link:focus, .nav-link:hover {
             text-decoration: none;
         }
+
+        /* Form box styling */
+        .form-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-top: 10px;
+            font-size: 30px;
+        }
+
+        select {
+            width: 100%;
+            max-width: 350px;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 24px;
+        }
+
+        button:hover {
+            background-color: white;
+            transform: scale(1.05);
+            color: black;
+        }
+
     </style>
 </head>
 <body>
     <header th:replace="~{fragments/hr_header :: hr_header}"></header>
     <h2>Respond to Leave Request</h2>
-    <form th:action="@{/hr/{leaveRequestId}/approve(leaveRequestId=${leaveRequestId})}" method="post">
-
-        <input type="hidden" name="leaveRequestId" th:value="${leaveRequestId}">
-        <label for="approvalStatus">Approval Status:</label>
-        <select id="approvalStatus" name="approvalStatus" required>
-            <option value="APPROVED">Approved</option>
-            <option value="REJECTED">Rejected</option>
-        </select>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="form-box">
+        <form th:action="@{/hr/{leaveRequestId}/approve(leaveRequestId=${leaveRequestId})}" method="post">
+            <input type="hidden" name="leaveRequestId" th:value="${leaveRequestId}">
+            <label for="approvalStatus">Approval Status:</label>
+            <select id="approvalStatus" name="approvalStatus" required>
+                <option value="APPROVED">Approved</option>
+                <option value="REJECTED">Rejected</option>
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
