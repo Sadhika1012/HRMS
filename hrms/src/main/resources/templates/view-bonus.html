@@ -8,17 +8,38 @@
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center the content horizontally */
-            justify-content: center; /* Center the content vertically */
-            height: 100vh;
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
         }
 
+        /* Navbar Styles */
+        .navbar {
+            background-color: #121212; /* Match background color */
+            display: flex;
+            justify-content: center; /* Center the navbar */
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .navbar a:hover {
+            background-color: white;
+            color: black;
+        }
+
         h2 {
             text-align: center;
+            margin-top: 30px; /* Added margin at the top */
             margin-bottom: 20px;
             font-size: 60px;
         }
@@ -26,7 +47,7 @@
         table {
             border-collapse: collapse;
             width: 80%;
-            margin-top: 20px;
+            margin: 20px auto; /* Center the table horizontally */
         }
 
         th, td {
@@ -67,7 +88,21 @@
     </style>
 </head>
 <body>
-    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <header th:replace="~{fragments/hr_header ::hr_header}">
+        <div class="navbar">
+            <a th:href="@{/hr/home}">Home</a>
+            <a th:href="@{/hr/queries}">View Queries</a>
+            <a th:href="@{/hr/complaints}">View Complaints</a>
+            <a th:href="@{/hr/payroll/view}">View Payroll Structures</a>
+            <a th:href="@{/hr/bonus}">Add Bonus</a>
+            <a th:href="@{/hr/attendance_view}">View Attendance Records</a>
+            <a th:href="@{/hr/leaves}">View Leave Requests</a>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <h2>View Bonuses</h2>
     <table border="1">
         <thead>
@@ -84,7 +119,6 @@
                 <td th:text="${bonus.employeeId}"></td>
                 <td th:text="${bonus.bonusAmount}"></td>
                 <td th:text="${bonus.bonusReason}"></td>
-                
             </tr>
         </tbody>
     </table>
