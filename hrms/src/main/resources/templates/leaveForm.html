@@ -10,9 +10,19 @@
             color: white;
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            background-color: #121212; /* Same color as the page background */
+            padding: 20px 0;
+            box-sizing: border-box; /* Ensure padding and border included in width */
         }
 
         h2 {
@@ -39,7 +49,9 @@
         }
 
         input[type="text"],
-        textarea {
+        input[type="date"],
+        textarea,
+        select {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -54,7 +66,8 @@
             resize: vertical;
         }
 
-        button[type="submit"] {
+        button[type="submit"],
+        .view-leaves button {
             width: 100%;
             padding: 10px;
             border: none;
@@ -65,7 +78,8 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        button[type="submit"]:hover {
+        button[type="submit"]:hover,
+        .view-leaves button:hover {
             background-color: #ffffff;
             color: rgb(0, 0, 0);
             transform: scale(1.05);
@@ -77,30 +91,31 @@
     </style>
 </head>
 <body>
-
-<form action="/employee/post_leave" method="post">
-    <input type="hidden" id="userId" name="userId" th:value="${userId}">
-    <h2>Leave Request Form</h2>
-    <div>
-        <label for="leaveType">Leave Type:</label>
-        <select id="leaveType" name="leaveType" required>
-            <option value="annual">Annual Leave</option>
-            <option value="sick">Sick Leave</option>
-            <option value="maternity">Maternity/Paternity Leave</option>
-            <option value="unpaid">Unpaid Leave</option>
-        </select>
-    </div>
-    <div>
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" name="startDate" required>
-    </div>
-    <div>
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" name="endDate" required>
-    </div>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <form action="/employee/post_leave" method="post">
+        <input type="hidden" id="userId" name="userId" th:value="${userId}">
+        <h2>Leave Request Form</h2>
+        <div>
+            <label for="leaveType">Leave Type:</label>
+            <select id="leaveType" name="leaveType" required>
+                <option value="annual">Annual Leave</option>
+                <option value="sick">Sick Leave</option>
+                <option value="maternity">Maternity/Paternity Leave</option>
+                <option value="unpaid">Unpaid Leave</option>
+            </select>
+        </div>
+        <div>
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+        <div>
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
         <button type="submit">Submit Request</button>
+    </form>
+    <div class="view-leaves">
+        <a th:href="@{/employee/leaves}"><button>View Leaves</button></a>
     </div>
-</form>
-
 </body>
 </html>

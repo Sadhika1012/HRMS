@@ -2,50 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Post Query</title>
+    <title>Query Form</title>
     <style>
+        /* Dark Mode Background */
         body {
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: flex-start;
+            height: 100vh; /* Adjusted height to take full viewport height */
+            margin: 0; /* Removed default margin */
         }
 
-        h2 {
+        /* Centered Navbar */
+        header {
+            width: 100%;
             text-align: center;
+            background-color: #121212; /* Same color as the page background */
+            padding: 20px 0;
+            margin-bottom: 20px; /* Added margin at the bottom */
+            box-sizing: border-box; /* Ensure padding and border included in width */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+        }
+
+        /* Form Container */
+        .form-container {
+            width: 80%;
             margin-bottom: 20px;
+            text-align: center;
         }
 
-        form {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 10px;
-            width: 300px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
+        /* Textarea Styles */
         textarea {
             width: 100%;
             padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-radius: 15px;
-            border: none;
+            border-radius: 5px;
+            border: 1px solid white;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
             resize: vertical;
         }
 
-        input[type="submit"] {
-            width: 100%;
+        /* Button Styles */
+        input[type="submit"],
+        .view-query button {
+            width: 150px;
             padding: 10px;
             border: none;
             border-radius: 15px;
@@ -53,32 +59,31 @@
             color: white;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 10px; /* Added margin at the top */
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        .view-query button:hover {
             background-color: #ffffff;
             color: rgb(0, 0, 0);
             transform: scale(1.05);
         }
-
-        .view-query {
-            margin-top: 20px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
-    <h2>Post Query</h2>
-    <form action="/employee/post" method="post" th:object="${query}">
-        <input type="hidden" id="userId" name="userId" th:value="${userId}">
-        
-        <label for="queryText">Query Text:</label><br>
-        <textarea id="queryText" name="queryText" th:field="*{queryText}"></textarea><br>
-        
-        <input type="submit" value="Submit">
-    </form>
-    <div class="view-query">
-        <a th:href="@{/employee/queries}"><button>View Query History</button></a>
+    <header th:replace="~{fragments/employee_header :: employee_header}"></header>
+    <div class="form-container">
+        <h2>Query Form</h2>
+        <form action="/employee/post" method="post" th:object="${query}">
+            <input type="hidden" id="userId" name="userId" th:value="${userId}">
+            
+            <label for="queryText">Query Text:</label><br>
+            <textarea id="queryText" name="queryText" rows="4" th:field="*{queryText}"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="view-query">
+            <a th:href="@{/employee/queries}"><button>View Query History</button></a>
+        </div>
     </div>
 </body>
 </html>
