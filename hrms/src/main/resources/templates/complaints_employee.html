@@ -12,7 +12,7 @@
             transition: background-color 0.5s ease;
             display: flex;
             flex-direction: column;
-            align-items: left;
+            align-items: center; /* Center content horizontally */
             justify-content: flex-start;
             height: 100vh; /* Adjusted height to take full viewport height */
             margin: 0; /* Removed default margin */
@@ -66,25 +66,27 @@
 <body>
     <header th:replace="~{fragments/employee_header :: employee_header}"></header>
     <h2>Complaint History</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Complaint ID</th>
-                <th>Employee ID</th>
-                <th>Complaint Text</th>
-                <th>Resolution</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="complaint : ${complaints}">
-                <td th:text="${complaint.complaintId}"></td>
-                <td th:text="${complaint.employeeId}"></td>
-                <td th:text="${complaint.complaintText}"></td>
-                <td th:text="${complaint.resolution}"></td>
-                <td th:text="${complaint.status}"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="display: flex; justify-content: center;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Complaint ID</th>
+                    <th>Employee ID</th>
+                    <th>Complaint Text</th>
+                    <th>Resolution</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="complaint : ${complaints}">
+                    <td th:text="${complaint.complaintId}"></td>
+                    <td th:text="${complaint.employeeId}"></td>
+                    <td th:text="${complaint.complaintText}"></td>
+                    <td th:text="${complaint.resolution}"></td>
+                    <td th:text="${complaint.status}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
