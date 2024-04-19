@@ -34,12 +34,17 @@ public class UrgentComplaintDecorator {
         complaint.setStatus(status);
     }
 
-    // Additional behavior for urgent complaints
     public void escalate() {
-        // Implement escalation logic
-        // For example, change status to "High Priority"
-        setStatus(Status.HIGH_PRIORITY);
+        // Check if the complaint description contains the word "internet"
+        if (getComplaintText().toLowerCase().contains("internet")) {
+            // If it contains "internet", set status to "High Priority"
+            setStatus(Status.HIGH_PRIORITY);
+        } else {
+            // If not, set status to "Open"
+            setStatus(Status.OPEN);
+        }
     }
+    
 
     // Method to get the underlying Complaint object
     public Complaint getComplaint() {
