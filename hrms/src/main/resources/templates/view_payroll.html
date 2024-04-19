@@ -8,25 +8,37 @@
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center the content horizontally */
-            justify-content: center; /* Center the content vertically */
-            height: 100vh;
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
         }
 
+        .navbar {
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
         h2 {
             text-align: center;
+            margin-top: 70px; /* Adjusted margin to accommodate the navbar */
             margin-bottom: 20px;
-            font-size: 60px;
+            font-size: 36px;
         }
 
         table {
             border-collapse: collapse;
             width: 80%;
-            margin-top: 20px;
+            margin: 0 auto; /* Center the table horizontally */
+            margin-bottom: 20px;
         }
 
         th, td {
@@ -37,7 +49,6 @@
 
         th {
             background-color: #000000;
-            color: white;
         }
 
         td {
@@ -48,7 +59,7 @@
             border: none;
             background-color: #020202;
             color: white;
-            font-size: 24px;
+            font-size: 18px;
             border-radius: 5px;
             padding: 5px 10px;
             cursor: pointer;
@@ -67,8 +78,10 @@
     </style>
 </head>
 <body>
-    <header th:replace="~{fragments/hr_header ::hr_header}"></header>
+    <header th:replace="~{fragments/hr_header ::hr_header}" class="navbar"></header>
+    
     <h2>View Payroll Structures</h2>
+    
     <table border="1">
         <thead>
             <tr>
